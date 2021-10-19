@@ -1,24 +1,53 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState, useEffect } from "react";
+import { GiHamburgerMenu } from "react-icons/gi";
+import { BsFacebook, BsTwitter, BsInstagram, BsReddit } from "react-icons/bs";
+import Nav from "./components/Nav";
 
 function App() {
+  const [hambuger, setHambuger] = useState(true);
+  const [navState, setNavState] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    window.addEventListener(
+      "resize",
+      () => {
+        setWindowWidth(window.innerWidth);
+      },
+      []
+    );
+
+    return () => {
+      window.removeEventListener("resize", () => {
+        setWindowWidth(window.innerWidth);
+      });
+    };
+  });
+
+  useEffect(() => {
+    if (windowWidth >= 755) {
+      setHambuger(false);
+      setNavState(true);
+    } else {
+      setHambuger(true);
+      setNavState(false);
+    }
+  }, [windowWidth]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <header>
+      <h1>Coding Addict</h1>
+      {hambuger && <GiHamburgerMenu onClick={() => setNavState(!navState)} />}
+      {navState && <Nav />}
+      {!hambuger && (
+        <div>
+          <BsFacebook />
+          <BsTwitter />
+          <BsInstagram />
+          <BsReddit />
+        </div>
+      )}
+    </header>
   );
 }
 
