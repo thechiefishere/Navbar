@@ -1,0 +1,80 @@
+$primary-color: rgb(83, 232, 243);
+$primary-background: rgb(243, 246, 247);
+$secondary-color: #999;
+$secondary-background: #ddd;
+
+* {
+  box-sizing: border-box;
+}
+body {
+  background-color: $primary-background;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 5px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 3px 3px 4px #ddd;
+  flex-wrap: wrap;
+  .heading {
+    margin: 0px;
+
+    span {
+      color: $primary-color;
+    }
+  }
+  .hambuger {
+    color: $primary-color;
+    margin-top: 5px;
+    font-size: 1.7rem;
+  }
+  .nav {
+    width: 100%;
+    // background-color: red;
+    ul {
+      padding-left: 5px;
+      li {
+        list-style: none;
+        margin-bottom: 20px;
+        a {
+          text-decoration: none;
+          color: #000;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 800px) {
+  .header {
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    .heading {
+    }
+    .nav {
+      width: 30%;
+      ul {
+        li {
+          display: inline;
+          //   margin-right: 7px;
+          margin-left: 6px;
+        }
+      }
+    }
+    .social-icons {
+      //   background-color: red;
+      align-self: center;
+      color: $primary-color;
+      .s-facebook {
+        margin-right: 10px;
+      }
+      .s-twitter {
+        margin-right: 10px;
+      }
+      .s-instagram {
+        margin-right: 10px;
+      }
+    }
+  }
+}

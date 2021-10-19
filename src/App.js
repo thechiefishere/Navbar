@@ -25,7 +25,7 @@ function App() {
   });
 
   useEffect(() => {
-    if (windowWidth >= 755) {
+    if (windowWidth >= 800) {
       setHambuger(false);
       setNavState(true);
     } else {
@@ -35,16 +35,23 @@ function App() {
   }, [windowWidth]);
 
   return (
-    <header>
-      <h1>Coding Addict</h1>
-      {hambuger && <GiHamburgerMenu onClick={() => setNavState(!navState)} />}
+    <header className="header">
+      <h1 className="heading">
+        Coding <span>Addict</span>
+      </h1>
+      {hambuger && (
+        <GiHamburgerMenu
+          onClick={() => setNavState(!navState)}
+          className="hambuger"
+        />
+      )}
       {navState && <Nav />}
       {!hambuger && (
-        <div>
-          <BsFacebook />
-          <BsTwitter />
-          <BsInstagram />
-          <BsReddit />
+        <div className="social-icons">
+          <BsFacebook className="s-facebook" />
+          <BsTwitter className="s-twitter" />
+          <BsInstagram className="s-instagram" />
+          <BsReddit className="s-reddit" />
         </div>
       )}
     </header>
